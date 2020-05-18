@@ -1,0 +1,61 @@
+Regular Pizza ,Cheese,12.7,17.95
+Regular Pizza ,1 topping,13.7,19.95
+Regular Pizza ,2 toppings,15.2,21.95
+Regular Pizza ,3 toppings,16.2,23.95
+Regular Pizza ,Special,17.75,25.95
+Sicilian Pizza, Cheese,24.45,38.7
+Sicilian Pizza, 1 item,26.45,40.7
+Sicilian Pizza, 2 items,28.45,42.7
+Sicilian Pizza, 3 items,29.45,44.7
+Sicilian Pizza, Special,30.45,45.7
+Toppings, Pepperoni,,
+Toppings, Sausage,,
+Toppings, Mushrooms,,
+Toppings, Onions,,
+Toppings, Ham,,
+Toppings, Canadian Bacon,,
+Toppings, Pineapple,,
+Toppings, Eggplant,,
+Toppings, Tomato & Basil,,
+Toppings, Green Peppers,,
+Toppings, Hamburger,,
+Toppings, Spinach,,
+Toppings, Artichoke,,
+Toppings, Buffalo Chicken,,
+Toppings, Barbecue Chicken,,
+Toppings, Anchovies,,
+Toppings, Black Olives,,
+Toppings, Fresh Garlic,,
+Toppings, Zucchini,,
+Subs, Cheese,6.5,7.95
+Subs, Italian,6.5,7.95
+Subs, Ham + Cheese,6.5,7.95
+Subs, Meatball,6.5,7.95
+Subs, Tuna,6.5,7.95
+Subs, Turkey,7.5,8.5
+Subs, Chicken Parmigiana,7.5,8.5
+Subs, Eggplant Parmigiana,6.5,7.95
+Subs, Steak,6.5,7.95
+Subs, Steak + Cheese,6.95,8.5
+Subs, + Mushrooms,0.5,0.5
+Subs, + Green Peppers,0.5,0.5
+Subs, + Onions,0.5,0.5
+Subs, Sausage,,8.5
+Subs, Hamburger,4.6,6.95
+Subs, Cheeseburger,5.1,7.45
+Subs, Fried Chicken,6.95,8.5
+Subs, Veggie,6.95,8.5
+Subs, Extra Cheese on any sub,0.5,0.5
+Pasta, Baked Ziti w/Mozzarella,,6.5
+Pasta, Baked Ziti w/Meatballs,,8.75
+Pasta, Baked Ziti w/Chicken,,9.75
+Salads, Garden Salad,,6.25
+Salads, Greek Salad,,8.25
+Salads, Antipasto,,8.25
+Salads, Salad w/Tuna,,8.25
+Dinner Platters, Garden Salad, 40.00, 65.00
+Dinner Platters, Greek Salad,  50.00, 75.00
+Dinner Platters, Antipasto,    50.00    , 75.00
+Dinner Platters, Baked Ziti,   40.00, 65.00
+Dinner Platters, Meatball Parm,50.00, 75.00
+Dinner Platters, Chicken Parm, 55.00, 85.00
