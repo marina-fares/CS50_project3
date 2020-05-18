@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect, reverse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .form import UserRegisterForm
+from django.contrib.auth import authenticate, login, logout
 
 
 def register(request):
@@ -19,10 +20,17 @@ def register(request):
 def home(request):
     return render(request, 'users/home.html')
 
-'''
-message.debug
-message.info
-message.success
-message.warning
-message.error
-'''
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("home"))
+    else:
+        return render(request, "users/login.html", {"message": "Invalid credentials."})
+
+def logout_view(request):
+    logout(request)
+    return render(request, "users/login.html", {"message": "Logged out."})
