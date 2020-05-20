@@ -36,24 +36,29 @@
       </div>
 
     </div>
+      <!--content block-->
 
-    <div class="col-10" style="height:100%;background-color:yellow;margin-left:17%; ">
-      <div class="row"style='background-color:yellow;' >
+    <div class="col-10" style="height:100%;;margin-left:17%; ">
+      <div class="row" >
         <div style='height:5000px;'>
+        {%block content%}
+        {%endblock%}
         </div>
       </div>
+      
+      
       <!--footer block-->
       <div class="row justify-content-md-center" style='height:10%; float:bottom;background-color:#8BE4F7;'>
       
-      <footer class="page-footer font-small">
+        <footer class="page-footer font-small">
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3"><small>For edx's CS50 By</small>
-          <a href="#"> Marina Fares</a>
-        </div>
-        <!-- Copyright -->
+          <!-- Copyright -->
+          <div class="footer-copyright text-center py-3"><small>For edx's CS50 By</small>
+            <a href="#"> Marina Fares</a>
+          </div>
+          <!-- Copyright -->
 
-      </footer>
+        </footer>
 
 
       </div>
