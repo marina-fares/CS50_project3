@@ -1,19 +1,17 @@
-<html>
-      <head>
-          <title>{% block title %}{% endblock %}</title>
-      </head>
-      <body>
-          <h1>Login</h1>
-            {% if message %}
+{% extends 'users/layout.html' %}
+{% block content %}
+<div class='content-section justify-content-center row' style='margin-bottom:25px;margin:55px;padding:20px;border-radius:10px; background-color:pink;opacity:0.9'>
+          <!--  {% if message %}
                 <div>
                     {{ message }}
-                </div>
-            {% endif %}
+                </div><br>
+            {% endif %}<br>-->
             <form action="{% url 'login' %}" method="post">
                 {% csrf_token %}
-                <input name="username" type="text"/>
-                <input name="password" type="password"/>
-                <input type="submit" value="Login"/>
+                <input name="username" placeholder='username' style='border-radius:5px;margin:20px;' type="text"/><br>
+                <input name="password" placeholder='password' style='border-radius:5px;margin:20px;'type="password"/><br>
+                <input type="submit" class='btn btn-outline-secondary mx-auto'value="Login"/><br>
             </form>
-      </body>
-  </html>
+</div>
+
+{% endblock %}

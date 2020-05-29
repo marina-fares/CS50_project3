@@ -15,6 +15,7 @@ class Menu(models.Model):
 class Order(models.Model):
     customer = models.ForeignKey( User, on_delete=models.CASCADE)
     item_id = models.ManyToManyField(Menu)
+    item_size = models.CharField( max_length=50, null=True)
     datetime = models.DateTimeField(default=timezone.now) 
 
     

@@ -2,6 +2,8 @@
 <!doctype html5>
 <html lang="en">
 <head>
+{%block script%}
+{% endblock %}
     <meta charset="utf-8">
     <title>Pizza Shop</title>
     <meta name="description" content="The HTML5 Herald">
@@ -20,18 +22,18 @@
     <div class="col-2" style="height:100%;background-color:#8BE4F7;position:fixed; z-index:1;padding:2%">
       
       <div class='row justify-content-md-center' style='margin:12%'>
-       <button class='btn btn-outline-secondary'style='width:100%'><a>Home</a></button>
+       <a class="btn btn-outline-secondary" style="width:100%" href="{%url 'home'%}">Home</a>
       </div>
       
       <div class='row justify-content-md-center'style='margin:12%'>
-       <button class='btn btn-outline-secondary'style='width:100%'>Make an order</button>
+       <a class='btn btn-outline-secondary'style='width:100%' href="{%url 'home'%}">Make an order</a>
       </div>
       
       <div class='row justify-content-md-center'style='margin:12%'>
-       <button class='btn btn-outline-secondary'style='width:100%'>Menu</button>
+       <a class='btn btn-outline-secondary'style='width:100%' href="{%url 'menu'%}">Menu</a>
       </div>
 
-      <div class='row justify-content-md-center'style='margin:12%; '>
+      <div class='row justify-content-md-center'style='margin:20%; '>
         <img src="{% static "imgs/img1.jpeg" %}" alt="Pizza" style='margin-top:270%;width:70%; border-radius:5px;'>
       </div>
 
@@ -39,8 +41,8 @@
       <!--content block-->
 
     <div class="col-10" style="height:100%;;margin-left:17%; ">
-      <div class="row" >
-        <div style='height:5000px;'>
+      <div class="row justify-content-center" >
+        <div style=''>
         {%block content%}
         {%endblock%}
         </div>
@@ -48,7 +50,7 @@
       
       
       <!--footer block-->
-      <div class="row justify-content-md-center" style='height:10%; float:bottom;background-color:#8BE4F7;'>
+      <div class="row justify-content-md-center fixed-bottom " style='height:10%; float:bottom;background-color:#8BE4F7;position:realtive;bottom:0;'>
       
         <footer class="page-footer font-small">
 

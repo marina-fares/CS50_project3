@@ -1,0 +1,73 @@
+{% extends 'users/layout.html' %}
+{%load static%}
+{%block script%}
+    <script>
+    const arr = new Array()
+    function submitorder()
+    {
+        var x = document.querySelectorAll("input").forEach(function(btn)
+        {
+            if(btn.checked === true && !(arr.includes(btn.id)))
+            {
+                arr.push(btn.id);
+                var node = document.createElement("OPTION");                 
+                var textnode = document.createTextNode(btn.value+"\" size : "+btn.id+"\"");
+                node.appendChild(textnode);
+                node.id=btn.id+'op';
+                document.getElementById("exampleFormControlSelect1").appendChild(node);
+            }
+            if(btn.checked === false && (arr.includes(btn.id)))
+            {
+                arr.pop(btn.id);
+                var node = document.getElementById(btn.id+'op');                 
+                node.remove();
+            }
+        });
+    }  
+    </script>
+{% endblock %}
+
+{% block content %}
+<table style="width:100%;" id = 'customers'>
+<tr>
+<th>Type</th>
+<th>Item</th>
+<th colspan="2">Small</th>
+<th colspan="2">Large</th>
+
+</tr>
+
+{%for m in menu%}
+
+<tr>
+    <td>{{m.type_i}}</td>
+    <td>{{m.item}}</td>
+    <td>{{m.price_small}}</td>
+    <td><input type="checkbox" class="form-check-input" p="Small"onclick="submitorder()" id="{{m.id}}+Small" value="{{m.item}}"  /></td>
+
+    <td>{{m.price_large}}</td>
+    <td><input type="checkbox" class="form-check-input" p="Large"onclick="submitorder()"  value="{{m.item}}" id="{{m.id}}+Large" /></td>
+</tr>
+{%endfor%}
+</table>
+
+
+<button type = "submit" value = "Get"  style='width:100%'><a href=''>Reset</a></button>
+
+<form id='submitform' style='margin-bottom:100px;'action="{% url 'show_order' %}" method="POST">
+
+<div class='row justify-content-center'>
+    <div class='col-11' style='background-color:pink;border-radius:5px;'>
+        {% csrf_token %}
+            <div class="form-group">
+            <label for="exampleFormControlSelect1">show items</label>
+            <select multiple class="select-multiple-field" id="exampleFormControlSelect1" name="exampleFormControlSelect1">
+            </select>
+            </div>
+        <button type="submit">Submit</button>
+    </div>
+</div>
+
+</form>
+
+{%endblock%}
