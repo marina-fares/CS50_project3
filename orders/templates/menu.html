@@ -1,4 +1,4 @@
-{% extends 'users/layout.html' %}
+{% extends 'base.html' %}
 {%load static%}
 {%block script%}
     <script>
@@ -28,6 +28,9 @@
 {% endblock %}
 
 {% block content %}
+<div class='container'>
+<div class='row justify-content-center'>
+<div class='col-8'>
 <table style="width:100%;" id = 'customers'>
 <tr>
 <th>Type</th>
@@ -69,5 +72,7 @@
 </div>
 
 </form>
-
+</div>
+</div>
+</div>
 {%endblock%}
