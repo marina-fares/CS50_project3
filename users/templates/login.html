@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class='content-section justify-content-center row' style='margin-bottom:25px;margin:55px;padding:20px;border-radius:10px; background-color:#2F4F4F; color:white;opacity:0.9'>
+    <form action="{% url 'orders:profile' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}    
+        <button class='btn btn-secondary' type='submit'> Submit</button>  
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,9 +1,15 @@
-{% extends 'users/layout.html' %}
-
 {% extends 'base.html' %}
+
+{% block 'login'%}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:logout' %}">LogOut</a>
+</li>
+{% endblock  %}
 {%load static%}
+
+
 {%block script%}
-   {% endblock %}
+{% endblock %}
 
 {% block content %}
 <table style="width:100%;margin:100px;text-align:center;" id = 'customers'>

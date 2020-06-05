@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {%load static%}
+
+{% block 'login'%}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:logout' %}">LogOut</a>
+</li>
+{% endblock  %}
+
 {%block script%}
     <script>
     const arr = new Array()
