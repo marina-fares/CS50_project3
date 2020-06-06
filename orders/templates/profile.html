@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {%load static%}
 
+{%block 'nav'%}
+          <a href="{% url 'orders:menu'%}" class="list-group-item list-group-item-action bg-light">Make an Order</a>
+          <a href="{%url 'orders:profile'%}" class="list-group-item list-group-item-action bg-light">Profile</a>
+{%endblock%}
+
 {% block 'login' %}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'users:logout' %}">LogOut</a>
@@ -12,6 +17,7 @@
 <div class='container'>
 <div class='col-6 col-md-12'>
 <img src="{%static 'imgs/bgnew.jpg'%}" opacity='0.9'>
+
 </div>
 </div>
 {% endblock  %}

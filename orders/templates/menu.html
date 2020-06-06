@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {%load static%}
 
+{%block 'nav'%}
+          <a href="{% url 'orders:menu'%}" class="list-group-item list-group-item-action bg-light">Make an Order</a>
+          <a href="{%url 'orders:profile'%}" class="list-group-item list-group-item-action bg-light">Profile</a>
+{%endblock%}
+
 {% block 'login'%}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'users:logout' %}">LogOut</a>
@@ -10,15 +15,20 @@
 {%block script%}
     <script>
     const arr = new Array()
-    function submitorder()
+    var totalprice = 0;
+    function submitorder(price)
     {
         var x = document.querySelectorAll("input").forEach(function(btn)
         {
             if(btn.checked === true && !(arr.includes(btn.id)))
             {
                 arr.push(btn.id);
+
+                totalprice+=price;
+                document.getElementById("totalprice").innerHTML= "Total Price = "+ totalprice;
+                
                 var node = document.createElement("OPTION");                 
-                var textnode = document.createTextNode(btn.value+"\" size : "+btn.id+"\"");
+                var textnode = document.createTextNode(btn.value+"\" size : "+btn.id+"\"" +" Price: "+ price);
                 node.appendChild(textnode);
                 node.id=btn.id+'op';
                 document.getElementById("exampleFormControlSelect1").appendChild(node);
@@ -26,6 +36,7 @@
             if(btn.checked === false && (arr.includes(btn.id)))
             {
                 arr.pop(btn.id);
+                totalprice-=price;
                 var node = document.getElementById(btn.id+'op');                 
                 node.remove();
             }
@@ -53,10 +64,10 @@
     <td>{{m.type_i}}</td>
     <td>{{m.item}}</td>
     <td>{{m.price_small}}</td>
-    <td><input type="checkbox" class="form-check-input" p="Small"onclick="submitorder()" id="{{m.id}}+Small" value="{{m.item}}"  /></td>
+    <td><input type="checkbox" class="form-check-input" p="Small"onclick="submitorder({{m.price_small}})"  value="{{m.item}}" id="{{m.id}}+Small"/></td>
 
     <td>{{m.price_large}}</td>
-    <td><input type="checkbox" class="form-check-input" p="Large"onclick="submitorder()"  value="{{m.item}}" id="{{m.id}}+Large" /></td>
+    <td><input type="checkbox" class="form-check-input" p="Large"onclick="submitorder({{m.price_large}})"  value="{{m.item}}" id="{{m.id}}+Large"/></td>
 </tr>
 {%endfor%}
 </table>
@@ -64,8 +75,7 @@
 
 <button type = "submit" value = "Get"  style='width:100%'><a href=''>Reset</a></button>
 
-<form id='submitform' style='margin-bottom:100px;'action="{% url 'show_order' %}" method="POST">
-
+<form id='submitform' style='margin-bottom:100px;'action="{% url 'orders:menu'%}" method="POST">
 <div class='row justify-content-center'>
     <div class='col-11' style='background-color:pink;border-radius:5px;'>
         {% csrf_token %}
@@ -74,11 +84,12 @@
             <select multiple class="select-multiple-field" id="exampleFormControlSelect1" name="exampleFormControlSelect1">
             </select>
             </div>
-        <button type="submit">Submit</button>
+            <h3 id='totalprice'></h3>
+        <button type="submit">Send Order</button>
     </div>
 </div>
-
 </form>
+
 </div>
 </div>
 </div>
