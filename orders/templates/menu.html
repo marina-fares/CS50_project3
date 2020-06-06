@@ -23,7 +23,9 @@
             if(btn.checked === true && !(arr.includes(btn.id)))
             {
                 arr.push(btn.id);
-
+                if(price == null){
+                    price = 0;
+                }
                 totalprice+=price;
                 document.getElementById("totalprice").innerHTML= "Total Price = "+ totalprice;
                 
@@ -64,10 +66,19 @@
     <td>{{m.type_i}}</td>
     <td>{{m.item}}</td>
     <td>{{m.price_small}}</td>
-    <td><input type="checkbox" class="form-check-input" p="Small"onclick="submitorder({{m.price_small}})"  value="{{m.item}}" id="{{m.id}}+Small"/></td>
 
-    <td>{{m.price_large}}</td>
-    <td><input type="checkbox" class="form-check-input" p="Large"onclick="submitorder({{m.price_large}})"  value="{{m.item}}" id="{{m.id}}+Large"/></td>
+    {%if m.price_small is NULL%}
+        <td><input type="checkbox" class="form-check-input" p="Small"onclick="submitorder()"  value="{{m.item}}" id="{{m.id}}+Small"/></td>
+    {%else%}
+        <td><input type="checkbox" class="form-check-input" p="Small"onclick="submitorder({{m.price_small}})"  value="{{m.item}}" id="{{m.id}}+Small"/></td>
+    {%endif%}
+        <td>{{m.price_large}}</td>
+    {%if m.price_small is NULL%}
+        <td><input type="checkbox" class="form-check-input" p="Large"onclick="submitorder()"  value="{{m.item}}" id="{{m.id}}+Large"/></td>
+    {%else%}
+        <td><input type="checkbox" class="form-check-input" p="Large"onclick="submitorder({{m.price_large}})"  value="{{m.item}}" id="{{m.id}}+Large"/></td>
+    {%endif%}
+
 </tr>
 {%endfor%}
 </table>

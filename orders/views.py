@@ -35,9 +35,7 @@ def profile(request):
 
         for item in order.item_id.all():
             list_item_foreach_order.append(item)
-        print(list_item_foreach_order)
         for item_new in list_item_foreach_order:
-            print(item_new)
             list_order.append(item_new)
             list_order.append(sizes[list_orders.index(order)][list_item_foreach_order.index(item)])
             list_of_items_and_sizes.append(list_order)
@@ -63,11 +61,14 @@ def menu_view(request):
         var = request.POST.getlist("exampleFormControlSelect1")
         item_size = []
         for item in var:
-            item_size.append(item[-16:-11])   
+            if 'Small' in item:
+                item_size.append('Small')
+            else:
+                item_size.append('Large')
         order = Order(customer= request.user, item_size= item_size, datetime= datetime.datetime.now())
         order.save()
         for item in var:
-            item_id = int(item[-20:-17])
+            item_id = int(item[item.find(':')+len(':'):item.rfind('+')])
             order.item_id.add(item_id)
         if(len(var)==0):
             order.delete()
