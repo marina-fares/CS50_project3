@@ -2,12 +2,15 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Menu,Order
 from django.http import JsonResponse
+from django.contrib import messages
+
 
 import datetime
 import ast
 
 
-# Create your views here.
+
+
 def home(request):
     return render(request, 'home.html')
 
@@ -57,6 +60,9 @@ def profile(request):
 
 
 def menu_view(request):
+    context = {
+          "menu": Menu.objects.all()
+      }
     if request.method == 'POST':
         var = request.POST.getlist("exampleFormControlSelect1")
         item_size = []
@@ -72,8 +78,8 @@ def menu_view(request):
             order.item_id.add(item_id)
         if(len(var)==0):
             order.delete()
+            messages.error(request, 'you have to select at least one item')
+            return render(request, "menu.html",context)
+        messages.success(request, 'Your order has been submitted')
         return redirect('orders:profile')
-    context = {
-          "menu": Menu.objects.all()
-      }
     return render(request, "menu.html",context)

@@ -16,6 +16,15 @@
 
   <!-- Custom styles for this template -->
   <link href="{% static 'home-static/css/simple-sidebar.css'%}" rel="stylesheet">
+
+{% if messages %}
+    {% for message in messages %}
+    <script>
+    alert(`{{message}}`);
+    </script>
+    {% endfor %}
+{% endif %}
+
 {% block script %}
 {% endblock  %}
 </head>
@@ -34,7 +43,7 @@
         {%endblock%}
         
         <a href="#" class="list-group-item list-group-item-action bg-light">Help</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Contact us</a>
+        <a href="admin/" class="list-group-item list-group-item-action bg-light">Admin Page</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

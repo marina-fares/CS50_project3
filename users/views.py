@@ -14,7 +14,8 @@ def register(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username = username, password = password)
             login(request, user)
-            return redirect('/orders/profile')
+            messages.success(request, 'Successfully submitted')
+            return redirect('/profile')
     else:
         form = UserRegisterForm()
     context={
